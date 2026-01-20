@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "417238105767",
+    "project_id": "leo-pernier-mathplay",
+    "storage_bucket": "leo-pernier-mathplay.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417238105767:android:b6cc7d0a89e6a57d68e582",
+        "android_client_info": {
+          "package_name": "com.leopernier.mathplay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYgk1YHi9_V5UPbNJNRKKa-XCWrx1WiqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
