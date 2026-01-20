@@ -31,12 +31,15 @@
     },
     "plugins": [
       "expo-secure-store",
-      "@react-native-firebase/app"
+      "@react-native-firebase/app",
+      "expo-asset",
+      "expo-font"
     ],
     "extra": {
       "eas": {
-        "projectId": "3434b20c-c9bc-47f6-a2a4-be526541b4fd"
+        "projectId": "da860523-ff99-4f31-998e-da5932b3169e"
       }
-    }
+    },
+    "owner": "leopernier"
   }
 }

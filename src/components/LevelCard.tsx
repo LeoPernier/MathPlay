@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState }               from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
-import Ionicons                                     from '@expo/vector-icons/Ionicons';
+import { Ionicons }                                 from '@expo/vector-icons';
 import { firebaseAuth, firebaseDb }                 from '../firebase/FirebaseConfig';
 
 interface Props {
