@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import SvgIcon from './SvgIcon';
 
 export default function BackButton({ onPress }: { onPress: () => void }) {
   return (
     <TouchableOpacity style={styles.btn} onPress={onPress}>
-      <Ionicons name="arrow-back" size={28} color="#222" />
+      <SvgIcon name="back" size={28} color="#222" />
     </TouchableOpacity>
   );
 }

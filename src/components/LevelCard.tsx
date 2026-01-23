@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState }               from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
-import { Ionicons }                                 from '@expo/vector-icons';
+import SvgIcon from './SvgIcon';
 import { firebaseAuth, firebaseDb }                 from '../firebase/FirebaseConfig';
 
 interface Props {
@@ -83,12 +83,7 @@ export default function LevelCard({
       </TouchableOpacity>
 
       {allCorrect && (
-        <Ionicons
-          name="star"
-          size={24}
-          color="#FFD700"
-          style={styles.star}
-        />
+        <SvgIcon name="star" size={24} color="#FFD700" style={styles.star} />
       )}
     </View>
   );
@@ -119,6 +114,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     marginBottom: 4,
+    color: '#222',
   },
   category: {
     fontSize: 14,

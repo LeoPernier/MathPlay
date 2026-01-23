@@ -2,7 +2,7 @@
 
 import React, { useState }                   from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { Ionicons }                          from '@expo/vector-icons';
+import SvgIcon from './SvgIcon';
 
 interface TooltipIconProps {
   text:        string;
@@ -34,12 +34,7 @@ const TooltipIcon: React.FC<TooltipIconProps> = ({
         ]}
         accessibilityLabel="Show tooltip"
       >
-        <Ionicons
-          name="help-circle-outline"
-          size={size}
-          color="#fff"
-          style={{ alignSelf: 'center' }}
-        />
+        <SvgIcon name="info" size={size} color="#fff" style={{ alignSelf: 'center' }} />
       </Pressable>
       {show && (
         <View

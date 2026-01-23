@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Ionicons }                                 from '@expo/vector-icons';
+import SvgIcon from './SvgIcon'
 
 interface NavigationControlsProps {
   onPrev:      () => void;
@@ -25,12 +25,7 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({onPrev, o
       activeOpacity={canPrev ? 0.8 : 1}
     >
       <View style={styles.btnContent}>
-        <Ionicons
-          name="chevron-back"
-          size={24}
-          color={canPrev ? '#fff' : '#bbb'}
-          style={styles.icon}
-        />
+        <SvgIcon name="chevronLeft" size={24} color={canPrev ? '#fff' : '#bbb'} style={styles.icon} />
         <Text style={[styles.btnText, { color: canPrev ? '#fff' : '#bbb' }]}>
           Prev
         </Text>
@@ -51,12 +46,7 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({onPrev, o
         <Text style={[styles.btnText, { color: canNext ? '#fff' : '#bbb' }]}>
           Next
         </Text>
-        <Ionicons
-          name="chevron-forward"
-          size={24}
-          color={canNext ? '#fff' : '#bbb'}
-          style={styles.icon}
-        />
+        <SvgIcon name="chevronRight" size={24} color={canNext ? '#fff' : '#bbb'} style={styles.icon} />
       </View>
     </TouchableOpacity>
   </View>

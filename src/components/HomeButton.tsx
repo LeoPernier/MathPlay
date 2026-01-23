@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
+import SvgIcon from './SvgIcon'
 
 interface Props {
   color: string
@@ -12,7 +12,7 @@ interface Props {
 export default function HomeButton({ color, onPress }: Props) {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Ionicons name="home" size={24} color={color} style={styles.icon} />
+      <SvgIcon name="home" size={24} color={color} style={styles.icon} />
       <Text style={[styles.text, { color }]}>{'Retour à l’accueil'}</Text>
     </TouchableOpacity>
   )
