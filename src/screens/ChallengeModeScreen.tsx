@@ -5,38 +5,25 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Switch } from 're
 import HomeButton                                                       from '../components/HomeButton';
 import Slider                                                           from '../components/Slider';
 import LabelWithTooltip                                                 from '../components/LabelWithTooltip';
-import { Ionicons }                                                     from '@expo/vector-icons';
+import SvgIcon from '../components/SvgIcon';
+import type { IconName } from '../icons';
 import { createLevelInstance }                                          from '../logic/GameEngine';
 import { LevelSettings, ScoringRules }                                  from '../config/LevelSettings';
 import { Operation }                                                    from '../config/GameTypes';
-import PlusSvg                                                          from '../../assets/icons/plus.svg'
-import MinusSvg                                                         from '../../assets/icons/minus.svg'
-import MultiplySvg                                                      from '../../assets/icons/multiply.svg'
-import DivisionSvg                                                      from '../../assets/icons/division.svg';
-import ModuloSvg                                                        from '../../assets/icons/modulo.svg';
 import { SvgProps }                                                     from 'react-native-svg';
 
-interface QuestionType {
-  key:        string;
-  label:      string;
-  Icon:       React.FC<SvgProps>;
-  operations: Operation[];
-}
-
-interface QuestionType {
-  key:        string;
-  label:      string;
-  Icon:       React.FC<SvgProps>;
-  operations: Operation[];
-}
-
 const QUESTION_TYPES = [
-  {key: 'addition',       label: 'Addition',       Icon: PlusSvg,operations:     ['+']},
-  {key: 'subtraction',    label: 'Subtraction',    Icon: MinusSvg,operations:    ['-']},
-  {key: 'multiplication', label: 'Multiplication', Icon: ModuloSvg,operations:   ['*']},
-  {key: 'division',       label: 'Division',       Icon: DivisionSvg,operations: ['/']},
-  {key: 'modulo',         label: 'Modulo',         Icon: ModuloSvg,operations:   ['%']}
-];
+  {key: 'addition',       label: 'Addition',       icon: 'plus',     operations: ['+'] as const },
+  {key: 'subtraction',    label: 'Subtraction',    icon: 'minus',    operations: ['-'] as const },
+  {key: 'multiplication', label: 'Multiplication', icon: 'multiply', operations: ['*'] as const },
+  {key: 'division',       label: 'Division',       icon: 'divide',   operations: ['/'] as const },
+  {key: 'modulo',         label: 'Modulo',         icon: 'modulo',   operations: ['%'] as const },
+] as const satisfies ReadonlyArray<{
+  key: string;
+  label: string;
+  icon: IconName;
+  operations: readonly Operation[];
+}>;
 
 const DIFFICULTIES = [
   { key: 'easy',   label: 'Facile',    color: '#81c784' },
@@ -259,12 +246,7 @@ export default function ChallengeModeScreen({ navigation }: any) {
                 onPress={() => handleTypeToggle(t.key)}
                 activeOpacity={0.8}
               >
-                <t.Icon
-                  width={32}
-                  height={32}
-                  fill={fillColor}
-                  style={{ opacity: selected ? 1 : 0.6 }}
-                />
+                <SvgIcon name={t.icon} size={32} fill={fillColor} style={{ opacity: selected ? 1 : 0.6 }} />
               </TouchableOpacity>
             );
           })}
@@ -273,16 +255,17 @@ export default function ChallengeModeScreen({ navigation }: any) {
         {selectedTypes.length >= 2 && (
           <View style={styles.settingBlock}>
             <View style={styles.settingRow}>
-              <Text>Questions à plusieurs termes</Text>
-              <Switch  
-                value={compositeEnabled} 
-                onValueChange={setCompositeEnabled} 
+              <Text style={styles.settingText}>Questions à plusieurs termes</Text>
+              <Switch
+                value={compositeEnabled}
+                onValueChange={setCompositeEnabled}
               />
             </View>
+
             {compositeEnabled && (
               <>
                 <View style={[styles.settingRow, styles.sliderRow]}>
-                  <Text>Opérandes par question :</Text>
+                  <Text style={styles.settingText}>Opérandes par question :</Text>
                   <View style={styles.sliderContainer}>
                     <Slider
                       minimumValue={2}
@@ -298,7 +281,7 @@ export default function ChallengeModeScreen({ navigation }: any) {
                 </View>
 
                 <View style={styles.settingRow}>
-                  <Text>Autoriser les négatifs</Text>
+                  <Text style={styles.settingText}>Autoriser les négatifs</Text>
                   <Switch
                     value={allowNegativesComp}
                     onValueChange={setAllowNegativesComp}
@@ -306,7 +289,7 @@ export default function ChallengeModeScreen({ navigation }: any) {
                 </View>
 
                 <View style={styles.settingRow}>
-                  <Text>Résultat positif uniquement</Text>
+                  <Text style={styles.settingText}>Résultat positif uniquement</Text>
                   <Switch
                     value={requirePositiveComp}
                     onValueChange={setRequirePositiveComp}
@@ -314,7 +297,7 @@ export default function ChallengeModeScreen({ navigation }: any) {
                 </View>
 
                 <View style={styles.settingRow}>
-                  <Text>Parenthèses</Text>
+                  <Text style={styles.settingText}>Parenthèses</Text>
                   <Switch
                     value={parenthesesComp}
                     onValueChange={setParenthesesComp}
@@ -322,7 +305,7 @@ export default function ChallengeModeScreen({ navigation }: any) {
                 </View>
 
                 <View style={styles.settingRow}>
-                  <Text>Autoriser les décimales</Text>
+                  <Text style={styles.settingText}>Autoriser les décimales</Text>
                   <Switch
                     value={decimalsComp}
                     onValueChange={setDecimalsComp}
@@ -392,11 +375,7 @@ export default function ChallengeModeScreen({ navigation }: any) {
                 }}
                 accessibilityLabel={timerEnabled ? 'Désactiver le timer' : 'Activer le timer'}
               >
-                <Ionicons
-                  name={timerEnabled ? 'time-outline' : 'time'}
-                  size={22}
-                  color={timerEnabled ? '#fff' : '#bbb'}
-                />
+                <SvgIcon name={timerEnabled ? 'clockActive' : 'clock'} size={22} color={timerEnabled ? '#fff' : '#bbb'} />
               </TouchableOpacity>
               <View style={{ flex: 1 }}>
                 {timerEnabled ? (
@@ -468,7 +447,7 @@ export default function ChallengeModeScreen({ navigation }: any) {
         onPress={startChallenge}
         activeOpacity={canStart ? 0.8 : 1}
       >
-        <Ionicons name="rocket-outline" size={22} color="#fff" style={{ marginRight: 8 }} />
+        <SvgIcon name="rocket" size={22} color="#fff" style={{ margin: 8 }} />
         <Text style={styles.startText}>
           {canStart ? "Let's Go!" : 'Choisis tout!'}
         </Text>
@@ -654,11 +633,18 @@ const styles = StyleSheet.create({
   rangeText: {
     width: 40,
     textAlign: 'center',
+    color: '#333',
+  fontWeight: '600',
   },
   verticalScroll: {
     flex: 1,
   },
   scrollContent: {
     paddingBottom: 24,
+  },
+  settingText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
   },
 });

@@ -3,7 +3,7 @@
 import React, { useState }                                 from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { firebaseAuth }                                    from '../firebase/FirebaseConfig';
-import { Ionicons }                                        from '@expo/vector-icons';
+import SvgIcon from '../components/SvgIcon';
 import HomeButton                                          from '../components/HomeButton';
 
 export default function SettingsScreen({ navigation }: any) {
@@ -25,7 +25,7 @@ export default function SettingsScreen({ navigation }: any) {
         {/* TODO Ajoutez des parametres */}
 
         <TouchableOpacity style={styles.signOutButton} onPress={signOut}>
-          <Ionicons name="log-out-outline" size={20} color="#fff" />
+          <SvgIcon name="signOut" size={20} color="#fff" />
           <Text style={styles.signOutText}>Se déconnecter</Text>
         </TouchableOpacity>
       </View>

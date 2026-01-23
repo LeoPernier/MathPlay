@@ -2,7 +2,7 @@
 
 import React                                        from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Ionicons }                                 from '@expo/vector-icons';
+import SvgIcon from '../components/SvgIcon';
 
 export default function TitleScreen({ navigation }: any) {
   return (
@@ -13,7 +13,7 @@ export default function TitleScreen({ navigation }: any) {
         style={[styles.button, styles.signIn]}
         onPress={() => navigation.navigate('SignIn')}
       >
-        <Ionicons name="log-in-outline" size={24} color="#fff" style={styles.buttonIcon} />
+        <SvgIcon name="signIn" size={24} color="#fff" style={styles.buttonIcon} />
         <Text style={styles.buttonText}>Se connecter</Text>
       </TouchableOpacity>
 
@@ -21,7 +21,7 @@ export default function TitleScreen({ navigation }: any) {
         style={[styles.button, styles.signUp]}
         onPress={() => navigation.navigate('SignUp')}
       >
-        <Ionicons name="person-add-outline" size={24} color="#fff" style={styles.buttonIcon} />
+        <SvgIcon name="userAdd" size={24} color="#fff" style={styles.buttonIcon} />
         <Text style={styles.buttonText}>Créer un compte</Text>
       </TouchableOpacity>
     </View>
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 40,
     textAlign: 'center',
+    color: '#222',
   },
   button: {
     flexDirection: 'row',

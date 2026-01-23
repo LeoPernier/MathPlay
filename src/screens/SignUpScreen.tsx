@@ -69,15 +69,16 @@ export default function SignUpScreen({ navigation }: any) {
       />
 
       <TextInput
-        style={[styles.input, { color: '#000' }]}
+        style={styles.input}
         placeholder="Mot de passe"
         placeholderTextColor="#777"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
       />
+
       <TextInput
-        style={[styles.input, { color: '#000' }]}
+        style={styles.input}
         placeholder="Confirmer le mot de passe"
         placeholderTextColor="#777"
         secureTextEntry
@@ -100,7 +101,9 @@ export default function SignUpScreen({ navigation }: any) {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.replace('SignIn')}>
-        <Text style={styles.link}>Vous avez déjà un compte ? Se connecter</Text>
+        <Text style={styles.link}>
+          Vous avez déjà un compte ? Se connecter
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -111,13 +114,14 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     justifyContent: 'center',
-    backgroundColor: '#fefefe',
+    backgroundColor: '#fffbf0',
   },
   header: {
     fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 24,
     textAlign: 'center',
+    color: '#222',
   },
   input: {
     borderWidth: 1,
@@ -125,6 +129,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     marginBottom: 16,
+    backgroundColor: '#fff',
+    color: '#111',
   },
   button: {
     backgroundColor: '#4caf50',

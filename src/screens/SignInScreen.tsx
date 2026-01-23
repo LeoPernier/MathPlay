@@ -38,7 +38,7 @@ export default function SignInScreen({ navigation }: any) {
       />
 
       <TextInput
-        style={[styles.input, { color: '#000' }]}
+        style={styles.input}
         placeholder="Mot de passe"
         placeholderTextColor="#777"
         secureTextEntry
@@ -54,14 +54,16 @@ export default function SignInScreen({ navigation }: any) {
         disabled={loading}
       >
         {loading ? (
-          <ActivityIndicator size="small" />
+          <ActivityIndicator size="small" color="#fff" />
         ) : (
           <Text style={styles.buttonText}>Se connecter</Text>
         )}
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-        <Text style={styles.link}>Vous n'avez pas de compte ? Inscrivez-vous</Text>
+        <Text style={styles.link}>
+          Vous n'avez pas de compte ? Inscrivez-vous
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -72,12 +74,14 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     justifyContent: 'center',
+    backgroundColor: '#fffbf0',
   },
   header: {
     fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 24,
     textAlign: 'center',
+    color: '#222',
   },
   input: {
     borderWidth: 1,
@@ -85,6 +89,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     marginBottom: 16,
+    backgroundColor: '#fff',
+    color: '#111',
   },
   button: {
     backgroundColor: '#2196f3',

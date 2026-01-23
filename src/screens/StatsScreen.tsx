@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import { Ionicons }                    from '@expo/vector-icons';
+import SvgIcon from '../components/SvgIcon';
 import HomeButton                      from '../components/HomeButton';
 import { firebaseAuth, firebaseDb }    from '../firebase/FirebaseConfig';
 import type { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
@@ -196,7 +196,7 @@ export default function StatsScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.profileContainer}>
-        <Ionicons name="person-circle-outline" size={80} color="#9c27b0" />
+        <SvgIcon name="user" size={80} color="#9c27b0" />
         <View style={styles.userInfo}>
           <Text style={styles.userName}>{userName}</Text>
           <Text style={styles.userEmail}>{userEmail}</Text>
@@ -210,13 +210,9 @@ export default function StatsScreen({ navigation }: any) {
               style={styles.sectionHeader}
               onPress={() => setChallengeOpen(o => !o)}
             >
-              <Ionicons name="trophy-outline" size={22} color="#9c27b0" />
+              <SvgIcon name="trophy" size={22} color="#9c27b0" />
               <Text style={styles.sectionTitle}>Mode Défi</Text>
-              <Ionicons
-                name={challengeOpen ? 'chevron-up' : 'chevron-down'}
-                size={20}
-                color="#9c27b0"
-              />
+              <SvgIcon name={challengeOpen ? 'chevronUp' : 'chevronDown'} size={20} color="#9c27b0" />
             </TouchableOpacity>
 
             {challengeOpen && (
@@ -283,11 +279,7 @@ export default function StatsScreen({ navigation }: any) {
                         <Text style={styles.summaryText}>
                           {bestGame.points} pts · {(bestGame.accuracy * 100).toFixed(0)}%
                         </Text>
-                        <Ionicons
-                          name={bestGameOpen ? 'chevron-up' : 'chevron-down'}
-                          size={16}
-                          color="#6a1b9a"
-                        />
+                        <SvgIcon name={bestGameOpen ? 'chevronUp' : 'chevronDown'} size={16} color="#6a1b9a" />
                       </TouchableOpacity>
 
                       {bestGameOpen && (
@@ -349,11 +341,7 @@ export default function StatsScreen({ navigation }: any) {
                   onPress={() => setLast10Open(open => !open)}
                 >
                   <Text style={styles.subHeader}>10 dernières parties</Text>
-                  <Ionicons
-                    name={last10Open ? 'chevron-up' : 'chevron-down'}
-                    size={20}
-                    color="#6a1b9a"
-                  />
+                  <SvgIcon name={last10Open ? 'chevronUp' : 'chevronDown'} size={20} color="#6a1b9a" />
                 </TouchableOpacity>
 
                 {last10Open && (
@@ -372,11 +360,7 @@ export default function StatsScreen({ navigation }: any) {
                             <Text style={styles.summaryText}>
                               {g.points} pts · {(g.accuracy * 100).toFixed(0)}%
                             </Text>
-                            <Ionicons
-                              name={isOpen ? 'chevron-up' : 'chevron-down'}
-                              size={16}
-                              color="#6a1b9a"
-                            />
+                            <SvgIcon name={isOpen ? 'chevronUp' : 'chevronDown'} size={16} color="#6a1b9a" />
                           </TouchableOpacity>
 
                           {isOpen && (
@@ -446,14 +430,9 @@ export default function StatsScreen({ navigation }: any) {
               style={styles.sectionHeader}
               onPress={() => setLearnOpen(o => !o)}
             >
-              <Ionicons name="book-outline" size={22} color="#9c27b0" />
+              <SvgIcon name="graduationCap" size={22} color="#9c27b0" />
               <Text style={styles.sectionTitle}>Mode Apprentissage</Text>
-              <Ionicons
-                name={learnOpen ? 'chevron-up' : 'chevron-down'}
-                size={20}
-                color="#9c27b0"
-                style={styles.chevron}
-              />
+              <SvgIcon name={learnOpen ? 'chevronUp' : 'chevronDown'} size={20} color="#9c27b0" style={styles.chevron} />
             </TouchableOpacity>
             {learnOpen && (
               <View style={styles.sectionBox}>
@@ -508,12 +487,7 @@ export default function StatsScreen({ navigation }: any) {
                             onPress={() => toggleAllLevels(sec.title, !allOpen)}
                           >
                             <Text style={styles.subTitle}>{sec.title}</Text>
-                            <Ionicons
-                              name={allOpen ? 'chevron-up' : 'chevron-down'}
-                              size={16}
-                              color="#2196f3"
-                              style={styles.subSectionChevron}
-                            />
+                            <SvgIcon name={allOpen ? 'chevronUp' : 'chevronDown'} size={16} color="#2196f3" style={styles.subSectionChevron} />
                           </TouchableOpacity>
                           {levels.map(ls => {
                             const key             = `${ls.section}-${ls.level}`;
@@ -531,14 +505,9 @@ export default function StatsScreen({ navigation }: any) {
                                 >
                                   <Text style={styles.levelText}>Niveau {ls.level}</Text>
                                   {allCorrect && (
-                                    <Ionicons name="star" size={18} color="#FFD700" />
+                                    <SvgIcon name="star" size={18} color="#FFD700" />
                                   )}
-                                  <Ionicons
-                                    name={levelOpenMap[key] ? 'chevron-up' : 'chevron-down'}
-                                    size={16}
-                                    color="#9c27b0"
-                                    style={styles.levelChevron}
-                                  />
+                                  <SvgIcon name={levelOpenMap[key] ? 'chevronUp' : 'chevronDown'} size={16} color="#9c27b0" style={styles.levelChevron} />
                                 </TouchableOpacity>
                                 {levelOpenMap[key] && (
                                   <>
@@ -555,27 +524,15 @@ export default function StatsScreen({ navigation }: any) {
                                     </View>
                                     <View style={styles.countsRow}>
                                       <View style={styles.countItem}>
-                                        <Ionicons
-                                          name="checkmark-circle-outline"
-                                          size={16}
-                                          color="#4caf50"
-                                        />
+                                        <SvgIcon name="checkCircle" size={16} color="#4caf50" />
                                         <Text style={styles.countText}>{correctCount}</Text>
                                       </View>
                                       <View style={styles.countItem}>
-                                        <Ionicons
-                                          name="close-circle-outline"
-                                          size={16}
-                                          color="#f44336"
-                                        />
+                                        <SvgIcon name="xCircle" size={16} color="#f44336" />
                                         <Text style={styles.countText}>{wrongCount}</Text>
                                       </View>
                                       <View style={styles.countItem}>
-                                        <Ionicons
-                                          name="help-circle-outline"
-                                          size={16}
-                                          color="#bdbdbd"
-                                        />
+                                        <SvgIcon name="help" size={16} color="#bdbdbd" />
                                         <Text style={styles.countText}>{unansweredCount}</Text>
                                       </View>
                                     </View>

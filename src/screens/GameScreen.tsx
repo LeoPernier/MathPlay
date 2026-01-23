@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import      { Ionicons }                 from '@expo/vector-icons';
+import SvgIcon from '../components/SvgIcon';
 import        firestore                  from '@react-native-firebase/firestore';
 import        BackButton                 from '../components/BackButton';
 import      { NavigationControls }       from '../components/NavigationControls';
@@ -385,7 +385,7 @@ export default function GameScreen({ route, navigation }: any) {
 
         {settings.timeLimitPerQuestion && (
           <View style={styles.timerBox}>
-            <Ionicons name="timer-outline" size={22} color="#666" />
+            <SvgIcon name="stopwatch" size={22} color="#666" />
             <Text
               style={[
                 styles.timerText,
@@ -426,15 +426,7 @@ export default function GameScreen({ route, navigation }: any) {
             
             {answeredStates[index] !== null ? (
               <>
-                <Ionicons
-                  name={answeredStates[index] ? 'checkmark-circle' : 'close-circle'}
-                  size={48}
-                  color={answeredStates[index]
-                    ? colors.correct
-                    : colors.wrong
-                  }
-                  style={styles.completedIcon}
-                />
+                <SvgIcon name={answeredStates[index] ? 'checkCircle' : 'xCircle'} size={48} color={answeredStates[index] ? colors.correct : colors.wrong} style={styles.completedIcon} />
                 <Text style={styles.answerText}>
                   Your answer: {userAnswers[index]}
                 </Text>
@@ -498,15 +490,17 @@ export default function GameScreen({ route, navigation }: any) {
           backgroundColor: 'rgba(0,0,0,0.6)', alignItems: 'center', justifyContent: 'center', zIndex: 9999,
         }}>
           <View style={{ backgroundColor: '#fff', padding: 32, borderRadius: 18, minWidth: '70%' }}>
-            <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 16 }}>Level Results</Text>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 16, color: '#111' }}>Level Results</Text>
             {questions.map((q, idx) => (
               <View key={q.id} style={{ marginBottom: 12 }}>
-                <Text style={{ fontSize: 16 }}>{q.questionText}</Text>
+                <Text style={{ fontSize: 16, color: '#111' }}>{q.questionText}</Text>
                 <Text style={{ fontWeight: 'bold', color: answeredStates[idx] ? '#4caf50' : '#f44336' }}>
                   {answeredStates[idx] ? 'Correct' : 'Incorrect'}
                 </Text>
-                <Text>Your answer: {userAnswers[idx]}</Text>
-                {!answeredStates[idx] && <Text>Correct answer: {q.answer}</Text>}
+                <Text style={{ color: '#111' }}>Your answer: {userAnswers[idx]}</Text>
+                {!answeredStates[idx] && (
+                  <Text style={{ color: '#111' }}>Correct answer: {q.answer}</Text>
+                )}
               </View>
             ))}
             <TouchableOpacity
@@ -567,6 +561,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     fontSize: 22,
     backgroundColor: '#fff',
+    color: '#111',
   },
   btn: {
     paddingVertical: 12,

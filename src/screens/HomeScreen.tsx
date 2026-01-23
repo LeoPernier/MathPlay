@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import SvgIcon from '../components/SvgIcon';
 
 export default function HomeScreen({ navigation }: any) {
   return (
@@ -13,7 +13,7 @@ export default function HomeScreen({ navigation }: any) {
         style={[styles.card, styles.learning]}
         onPress={() => navigation.navigate('Apprentissage')}
       >
-        <Ionicons name="book" size={28} style={styles.icon} />
+        <SvgIcon name="graduationCap" size={28} color="#fff" style={styles.icon} />
         <View style={styles.textContainer}>
           <Text style={styles.cardTitle}>Apprentissage</Text>
           <Text style={styles.cardSubtitle}>Progression & Feedback</Text>
@@ -24,7 +24,7 @@ export default function HomeScreen({ navigation }: any) {
         style={[styles.card, styles.challenge]}
         onPress={() => navigation.navigate('Challenge')}
       >
-        <Ionicons name="trophy" size={28} style={styles.icon} />
+        <SvgIcon name="trophy" size={28} color="#fff" style={styles.icon} />
         <View style={styles.textContainer}>
           <Text style={styles.cardTitle}>Défi</Text>
           <Text style={styles.cardSubtitle}>Points & Compétition</Text>
@@ -35,7 +35,7 @@ export default function HomeScreen({ navigation }: any) {
         style={[styles.card, styles.stats]}
         onPress={() => navigation.navigate('Stats')}
       >
-        <Ionicons name="stats-chart" size={28} style={styles.icon} />
+        <SvgIcon name="stats" size={28} color="#fff" style={styles.icon} />
         <View style={styles.textContainer}>
           <Text style={styles.cardTitle}>Statistiques</Text>
           <Text style={styles.cardSubtitle}>Vos progrès</Text>
@@ -46,7 +46,7 @@ export default function HomeScreen({ navigation }: any) {
         style={[styles.card, styles.settings]}
         onPress={() => navigation.navigate('Settings')}
       >
-        <Ionicons name="settings-outline" size={28} style={styles.icon} />
+        <SvgIcon name="settings" size={28} color="#fff" style={styles.icon} />
         <View style={styles.textContainer}>
           <Text style={styles.cardTitle}>Paramètres</Text>
           <Text style={styles.cardSubtitle}>Réglages</Text>

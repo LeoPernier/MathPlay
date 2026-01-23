@@ -4,7 +4,7 @@ import React, { useState, useEffect }                            from 'react';
 import { View, SectionList, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { createLevelInstance }                                   from '../logic/GameEngine';
 import LevelCard                                                 from '../components/LevelCard';
-import { Ionicons }                                              from '@expo/vector-icons';
+import SvgIcon from '../components/SvgIcon';
 import HomeButton                                                from '../components/HomeButton';
 import { learnSections, LearnLevel, LearnSection }               from '../config/LearnModeConfig';
 import { LevelSettings }                                         from '../config/LevelSettings';
@@ -159,11 +159,7 @@ export default function LearnModeScreen({ navigation }: any) {
         activeOpacity={0.7}
       >
         <Text style={styles.sectionHeader}>{title}</Text>
-        <Ionicons
-          name={isOpen ? 'chevron-up' : 'chevron-down'}
-          size={22}
-          color="#2196f3"
-        />
+        <SvgIcon name={isOpen ? 'chevronUp' : 'chevronDown'} size={22} color="#2196f3" />
       </TouchableOpacity>
     );
   };
@@ -200,11 +196,7 @@ export default function LearnModeScreen({ navigation }: any) {
             />
             {completed && (
               <View style={styles.checkIcon}>
-                <Ionicons
-                  name="checkmark-circle"
-                  size={24}
-                  color="#2196f3"
-                />
+                <SvgIcon name="checkCircle" size={22} color="#2196f3" />
               </View>
             )}
           </View>
@@ -219,12 +211,7 @@ export default function LearnModeScreen({ navigation }: any) {
             activeOpacity={0.85}
           >
             <Text style={styles.showMoreText}>Show More</Text>
-            <Ionicons
-              name="chevron-down"
-              size={18}
-              color="#2196f3"
-              style={{ marginLeft: 8 }}
-            />
+            <SvgIcon name="chevronDown" size={18} color="#2196f3" style={{ marginLeft: 8 }} />
           </TouchableOpacity>
         );
     }
